@@ -1,1 +1,34 @@
+Loop = True
+while Loop == True:
+  Operation = str(input("Date or Nombre?:", ))
+  if Operation == "Nombre":
+    Months = 0
+    InitAmount = int(input("Initial Amount:", ))
+    Comparator = int(input("Amount Reached:", ))
+    PercentLost = float(input("Percentage Lost Per Month:", ))
+    AmountGained = int(input("Amount Gained Per Month:", ))
+    PercentLost = ((PercentLost-100)*(-1))/100
+    InitTimeSave = InitAmount
+    while InitAmount <= Comparator:
+      InfinityTest = InitAmount
+      Months += 1
+      InitAmount = InitAmount*PercentLost + AmountGained
+      if InitAmount < InitTimeSave:
+        print("On ne peut pas atteindre ce numéro")
+        Months = 0
+        break
+      if InfinityTest == InitAmount:
+        print("On ne peut pas atteindre ce numéro")
+        break
+    print("Amount of Months it takes to reach:", Months)
 
+  if Operation == "Date":
+    InitAmount = int(input("Initial Amount:", ))
+    FinalAmount = InitAmount
+    PercentLost = float(input("Percentage Lost Per Month:", ))
+    PercentLost = ((PercentLost-100)*(-1))/100
+    AmountGained = int(input("Amount Gained Per Month:", ))
+    MonthsPassed = int(input("Time that passed in Months:", ))
+    for loop in range(MonthsPassed):
+      InitAmount = InitAmount*PercentLost + AmountGained
+    print("Amount Gained/Lost in", MonthsPassed, "Months:", round(InitAmount))
